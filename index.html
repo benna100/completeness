@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Frustrating</title>
     <!-- Mobile header color for Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#ff4970">
@@ -19,7 +20,26 @@
     <main>
         <canvas></canvas>
     </main>
-    <script type="text/javascript" src="main.0c04068e6f857b8c4c26.js"></script></body>
+    <script type="text/javascript" src="main.cbecf0e6b73eda5d75ff.js"></script></body>
     <script src="https://www.paypal.com/sdk/js?client-id=AcwKOPTBhKAxLfFXujZyzmALyqthV7yGmR6Y16lPduxqeMCQsA38ztms10X-8axIQq2SK6RRk91bfog4"></script>
-    <script>paypal.Buttons().render('body');</script>
+    <script>
+        paypal.Buttons({
+          createOrder: function(data, actions) {
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: '0.01'
+                }
+              }]
+            });
+          },
+          onApprove: function(data, actions) {
+            // Capture the funds from the transaction
+            return actions.order.capture().then(function(details) {
+              // Show a success message to your buyer
+              alert('Transaction completed by ' + details.payer.name.given_name);
+            });
+          }
+        }).render('#paypal-button-container');
+      </script>
 </html>
