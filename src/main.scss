@@ -1,0 +1,41 @@
+@import '../node_modules/css-reset-and-normalize/scss/reset-and-normalize.scss';
+
+body {
+    font-family: Open Sans, sans-serif;
+	background-color: #f3f3f3;
+}
+* {
+    box-sizing: border-box;
+}
+
+body, main {
+	width: 100vw;
+	height: 100vh;
+	padding: 0;
+}
+
+.wanna-pay {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 36px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+	text-align: center;
+	line-height: 1.6rem;
+
+	&.shown {
+		display: block;
+	}
+
+	h1 {
+		margin-bottom: 12px;
+	}
+
+	h2 {
+		margin-bottom: 24px;
+	}
+}
